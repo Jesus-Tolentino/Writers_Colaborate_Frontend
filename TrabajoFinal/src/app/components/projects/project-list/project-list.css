@@ -1,0 +1,17 @@
+.element-row {
+  height: 48px; /* altura normal */
+}
+
+.detail-row {
+  height: 0 !important; /* evita espacios */
+}
+
+.detail-row > td {
+  padding: 0 !important; /* sin padding extra */
+}
+
+.description-box {
+  padding: 16px;
+  background-color: #fafafa;
+  font-size: 14px;
+}

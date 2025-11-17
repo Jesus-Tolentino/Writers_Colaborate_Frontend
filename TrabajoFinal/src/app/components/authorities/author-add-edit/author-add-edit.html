@@ -1,0 +1,60 @@
+<h3 *ngIf="!(authorId>0)">Registrar Autor</h3>
+<h3 *ngIf="authorId>0">Editar Autor</h3>
+<br>
+<form [formGroup]="crudForm">
+
+    <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="id" readonly="true">
+    </mat-form-field>
+<br>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="firstname">        
+    </mat-form-field>    
+    <span style="color:red"  *ngIf="this.crudForm.get('firstname')?.hasError('required') && this.crudForm.get('firstname')?.touched " >Este campo es requerido</span>
+    <span style="color:red"  *ngIf="this.crudForm.get('firstname')?.hasError('minlength') && this.crudForm.get('firstname')?.touched " >Se requiere mínimo 2 caracteres</span>
+    <br>
+    <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="lastname">        
+    </mat-form-field>    
+    <span style="color:red"  *ngIf="this.crudForm.get('lastname')?.hasError('required') && this.crudForm.get('lastname')?.touched " >Este campo es requerido</span>
+    <span style="color:red"  *ngIf="this.crudForm.get('lastname')?.hasError('minlength') && this.crudForm.get('lastname')?.touched " >Se requiere mínimo 2 caracteres</span>
+    <br>
+    <mat-form-field>
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput formControlName="email">
+        <span style="color:red"  *ngIf="this.crudForm.get('email')?.hasError('required') && this.crudForm.get('name')?.touched " >Este campo es requerido</span>
+        <span style="color:red"  *ngIf="this.crudForm.get('email')?.hasError('minlength') && this.crudForm.get('name')?.touched " >Se requiere mínimo 2 caracteres</span>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>User Id</mat-label>
+        <input matInput formControlName="userId">
+        <span style="color:red"  *ngIf="this.crudForm.get('userId')?.hasError('required') && this.crudForm.get('name')?.touched " >Este campo es requerido</span>
+        <span style="color:red"  *ngIf="this.crudForm.get('userId')?.hasError('minlength') && this.crudForm.get('name')?.touched " >Se requiere mínimo 2 digitos</span>
+    </mat-form-field>
+<br>
+    
+<br>
+<!--
+    <mat-form-field>
+        <mat-label>Fecha de Fundación</mat-label>
+        <input matInput formControlName="fundingDate">
+    </mat-form-field>
+-->
+<mat-form-field>
+    <mat-label>Fecha de Nacimiento</mat-label>
+    <mat-datepicker #selectorDeFecha></mat-datepicker>
+    <input matInput formControlName="birthdate" [matDatepicker]="selectorDeFecha">
+    <mat-datepicker-toggle matIconSuffix [for]="selectorDeFecha"></mat-datepicker-toggle>    
+    <mat-hint>MM/DD/YYYY</mat-hint>
+</mat-form-field>
+
+</form>
+
+<br>
+<button mat-raised-button routerLink="/author-list">Cancelar</button>
+ | 
+<button mat-flat-button (click)="Grabar()" >Grabar</button>

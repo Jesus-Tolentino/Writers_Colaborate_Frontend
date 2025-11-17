@@ -1,0 +1,70 @@
+<h3>Lista de Proyectos</h3>
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+
+
+<table mat-table [dataSource]="dsProjects" multiTemplateDataRows class="mat-elevation-z8">
+<tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+
+
+  <!-- ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let project">{{project.id}}</td>
+  </ng-container>
+
+  <!-- Author ID -->
+  <ng-container matColumnDef="authorId">
+    <th mat-header-cell *matHeaderCellDef>Autor ID</th>
+    <td mat-cell *matCellDef="let project">{{project.authorId}}</td>
+  </ng-container>
+
+  <!-- Author Name -->
+  <ng-container matColumnDef="authorName">
+    <th mat-header-cell *matHeaderCellDef>Autor</th>
+    <td mat-cell *matCellDef="let project">{{project.authorName}}</td>
+  </ng-container>
+
+  <!-- Title -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Título</th>
+    <td mat-cell *matCellDef="let project">{{project.title}}</td>
+  </ng-container>
+
+  <!-- Expand Button -->
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let project">
+      <button mat-icon-button (click)="toggle(project)">
+        <mat-icon>{{ isExpanded(project) ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Row -->
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplayWithExpand"
+      class="element-row">
+  </tr>
+
+  <!-- Expanded Row -->
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"
+      class="detail-row">
+  </tr>
+
+  <!-- Expanded Content -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let project" [attr.colspan]="columnsToDisplayWithExpand.length">
+
+      <div *ngIf="isExpanded(project)" class="description-box">
+        <strong>Descripción:</strong>
+        <p>{{ project.description }}</p>
+      </div>
+
+    </td>
+  </ng-container>
+
+</table>
