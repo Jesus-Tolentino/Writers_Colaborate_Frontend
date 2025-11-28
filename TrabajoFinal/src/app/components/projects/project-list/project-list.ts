@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ProjectList {
 dsProjects= new MatTableDataSource<Project>();
-columnsToDisplay: string[] = ['id', 'authorId', 'authorName', 'title'];
+columnsToDisplay: string[] = ['id', 'title','creationDate','publicationDate','state','meetingsEnabled','opciones'];
 columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
 expandedElement: Project | null=null;
 constructor(private projectService:ProjectService,private dialog: MatDialog, private snack: MatSnackBar){}

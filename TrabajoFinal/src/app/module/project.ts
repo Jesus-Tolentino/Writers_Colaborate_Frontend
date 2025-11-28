@@ -8,9 +8,11 @@ private Long id;
     */
 
     id:number;
-    authorId:number;
-    authorName:string;
     title:string;
     description:string;
+    creationDate:string;
+    publicationDate:string;
+    state:string;
+    meetingsEnabled:boolean;
 
 }

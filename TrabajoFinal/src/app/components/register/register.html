@@ -1,0 +1,46 @@
+<h3>Registro</h3>
+<br>
+<br>
+<form [formGroup]="crudForm">
+    <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="id" readonly="true">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">        
+    </mat-form-field>    
+    <span style="color:red"  *ngIf="this.crudForm.get('username')?.hasError('required') && this.crudForm.get('username')?.touched " >Este campo es requerido</span>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">        
+    </mat-form-field>    
+    <span style="color:red"  *ngIf="this.crudForm.get('password')?.hasError('required') && this.crudForm.get('password')?.touched " >Este campo es requerido</span>
+<br>
+
+<br>
+<button mat-raised-button routerLink="/login">Cancelar</button>
+ | 
+<button mat-flat-button (click)="Grabar()" >Grabar</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>

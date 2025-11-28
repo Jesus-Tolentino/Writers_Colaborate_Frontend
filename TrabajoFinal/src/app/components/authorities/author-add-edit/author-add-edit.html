@@ -1,8 +1,8 @@
 <h3 *ngIf="!(authorId>0)">Registrar Autor</h3>
 <h3 *ngIf="authorId>0">Editar Autor</h3>
 <br>
+<br>
 <form [formGroup]="crudForm">
-
     <mat-form-field>
         <mat-label>Id</mat-label>
         <input matInput formControlName="id" readonly="true">
@@ -10,17 +10,17 @@
 <br>
     <mat-form-field>
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="firstname">        
+        <input matInput formControlName="name">        
     </mat-form-field>    
-    <span style="color:red"  *ngIf="this.crudForm.get('firstname')?.hasError('required') && this.crudForm.get('firstname')?.touched " >Este campo es requerido</span>
-    <span style="color:red"  *ngIf="this.crudForm.get('firstname')?.hasError('minlength') && this.crudForm.get('firstname')?.touched " >Se requiere mínimo 2 caracteres</span>
+    <span style="color:red"  *ngIf="this.crudForm.get('name')?.hasError('required') && this.crudForm.get('name')?.touched " >Este campo es requerido</span>
+    <span style="color:red"  *ngIf="this.crudForm.get('name')?.hasError('minlength') && this.crudForm.get('name')?.touched " >Se requiere mínimo 2 caracteres</span>
     <br>
     <mat-form-field>
         <mat-label>Apellido</mat-label>
-        <input matInput formControlName="lastname">        
+        <input matInput formControlName="lastName">        
     </mat-form-field>    
-    <span style="color:red"  *ngIf="this.crudForm.get('lastname')?.hasError('required') && this.crudForm.get('lastname')?.touched " >Este campo es requerido</span>
-    <span style="color:red"  *ngIf="this.crudForm.get('lastname')?.hasError('minlength') && this.crudForm.get('lastname')?.touched " >Se requiere mínimo 2 caracteres</span>
+    <span style="color:red"  *ngIf="this.crudForm.get('lastName')?.hasError('required') && this.crudForm.get('lastName')?.touched " >Este campo es requerido</span>
+    <span style="color:red"  *ngIf="this.crudForm.get('lastName')?.hasError('minlength') && this.crudForm.get('lastName')?.touched " >Se requiere mínimo 2 caracteres</span>
     <br>
     <mat-form-field>
         <mat-label>Correo Electrónico</mat-label>
@@ -29,13 +29,6 @@
         <span style="color:red"  *ngIf="this.crudForm.get('email')?.hasError('minlength') && this.crudForm.get('name')?.touched " >Se requiere mínimo 2 caracteres</span>
     </mat-form-field>
     <br>
-    <mat-form-field>
-        <mat-label>User Id</mat-label>
-        <input matInput formControlName="userId">
-        <span style="color:red"  *ngIf="this.crudForm.get('userId')?.hasError('required') && this.crudForm.get('name')?.touched " >Este campo es requerido</span>
-        <span style="color:red"  *ngIf="this.crudForm.get('userId')?.hasError('minlength') && this.crudForm.get('name')?.touched " >Se requiere mínimo 2 digitos</span>
-    </mat-form-field>
-<br>
     
 <br>
 <!--

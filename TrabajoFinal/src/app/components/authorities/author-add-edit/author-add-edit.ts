@@ -25,11 +25,10 @@ ngOnInit(){
     this.crudForm = this.formBuilder.group(
       {
         id:[""],
-        firstname:["",[Validators.required, Validators.minLength(2)]],
-        lastname:["",[Validators.required, Validators.minLength(2)]],
+        name:["",[Validators.required, Validators.minLength(2)]],
+        lastName:["",[Validators.required, Validators.minLength(2)]],
         birthdate:[""],
         email:[""],
-        userId:[""]
       }
     );
 
@@ -40,11 +39,10 @@ ngOnInit(){
         this.authorService.findById(this.authorId).subscribe({
             next:(data:Author)=>{
               this.crudForm.get("id")?.setValue(data.id);
-              this.crudForm.get("firstname")?.setValue(data.firstname);
-              this.crudForm.get("lastname")?.setValue(data.lastname);
+              this.crudForm.get("name")?.setValue(data.name);
+              this.crudForm.get("lastName")?.setValue(data.lastName);
               this.crudForm.get("birthdate")?.setValue(data.birthdate+"T00:00:00");
                this.crudForm.get("email")?.setValue(data.email);
-               this.crudForm.get("userId")?.setValue(data.userId);
             }
         })
 
@@ -60,11 +58,10 @@ ngOnInit(){
 
       const author:Author= {
           id:this.crudForm.get("id")?.value,
-          firstname:this.crudForm.get("firstname")?.value,
-          lastname:this.crudForm.get("lastname")?.value,
+          name:this.crudForm.get("name")?.value,
+          lastName:this.crudForm.get("lastName")?.value,
           birthdate:this.crudForm.get("birthdate")?.value,
           email:this.crudForm.get("email")?.value,
-          userId:this.crudForm.get("userId")?.value,
         };
 
 

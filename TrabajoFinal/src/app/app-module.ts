@@ -11,13 +11,23 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatAnchor } from "@angular/material/button";
 import { DeleteConfirmation } from './components/confirmations/delete-confirmation/delete-confirmation';
 import { ProjectList } from './components/projects/project-list/project-list';
+import { Header } from './components/header/header';
+import { Home } from './components/home/home';
+import { Login } from './components/login/login';
+import { ProjectAddEdit } from './components/projects/project-add-edit/project-add-edit';
+import { Register } from './components/register/register';
 @NgModule({
   declarations: [
     App,
     AuthorList,
     AuthorAddEdit,
     DeleteConfirmation,
-    ProjectList
+    ProjectList,
+    Header,
+    Home,
+    Login,
+    ProjectAddEdit,
+    Register
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ import { DeleteConfirmation } from '../../confirmations/delete-confirmation/dele
 })
 export class AuthorList {
   dsAuthorities= new MatTableDataSource<Author>();
-displayedColumns: string[] = ['id', 'firstname','lastname', 'birthdate', 'email','opciones'];
+displayedColumns: string[] = ['id', 'name','lastName', 'birthdate', 'email','opciones'];
 constructor(private authorService:AuthorService,private dialog: MatDialog, private snack: MatSnackBar){}
 ngOnInit()
 {

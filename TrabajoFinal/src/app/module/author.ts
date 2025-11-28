@@ -7,9 +7,8 @@ private Long id;
     private String email;
 */
 id:number,
-firstname:string,
-lastname:string,
+name:string,
+lastName:string,
 birthdate:string,
-email:string,
-userId:number
+email:string
 }

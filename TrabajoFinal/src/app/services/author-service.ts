@@ -6,7 +6,7 @@ import { Author } from '../module/author';
   providedIn: 'root',
 })
 export class AuthorService {
-  ruta_servidor:string="http://localhost:8081/api/authors";
+  ruta_servidor:string="http://localhost:8080/upc/autores";
   constructor(private http:HttpClient){}
   findAll()
   {
