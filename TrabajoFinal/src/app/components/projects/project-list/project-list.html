@@ -1,0 +1,95 @@
+<h3>Lista de Proyectos</h3>
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<br>
+<button mat-raised-button routerLink="/project-add" >Crear Nuevo Proyecto</button>
+<br>
+
+<table mat-table [dataSource]="dsProjects" multiTemplateDataRows class="mat-elevation-z8">
+<tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+
+<!-- ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let project">{{project.id}}</td>
+  </ng-container>
+
+  <!-- ID -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Título</th>
+    <td mat-cell *matCellDef="let project">{{project.title}}</td>
+  </ng-container>
+
+  <!-- Author ID -->
+  <ng-container matColumnDef="creationDate">
+    <th mat-header-cell *matHeaderCellDef>Fecha de Creación</th>
+    <td mat-cell *matCellDef="let project">{{project.creationDate}}</td>
+  </ng-container>
+
+  <!-- Author Name -->
+  <ng-container matColumnDef="publicationDate">
+    <th mat-header-cell *matHeaderCellDef>Fecha de Publicación</th>
+    <td mat-cell *matCellDef="let project">{{project.publicationDate}}</td>
+  </ng-container>
+
+  <!-- Title -->
+  <ng-container matColumnDef="state">
+    <th mat-header-cell *matHeaderCellDef>Estado</th>
+    <td mat-cell *matCellDef="let project">{{project.state}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="meetingsEnabled">
+    <th mat-header-cell *matHeaderCellDef>Reunión</th>
+    <td mat-cell *matCellDef="let project">{{project.meetingsEnabled?"Si":"No"}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="opciones">
+    <th mat-header-cell *matHeaderCellDef> Opciones </th>
+    <td mat-cell *matCellDef="let element"> 
+      <a style="cursor: pointer;" (click)="Borrar(element.id)"><mat-icon>delete</mat-icon></a>
+      <a style="cursor: pointer;" routerLink="/project-edit/{{element.id}}"><mat-icon>edit</mat-icon></a>
+    </td>
+  </ng-container>
+
+
+  <!-- Expand Button -->
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let project">
+      <button mat-icon-button (click)="toggle(project)">
+        <mat-icon>{{ isExpanded(project) ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+
+   <!-- Expanded Content -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let project" [attr.colspan]="columnsToDisplayWithExpand.length">
+
+      <div *ngIf="isExpanded(project)" class="description-box">
+        <strong>Descripción:</strong>
+        <p>{{ project.description }}</p>
+      </div>
+
+    </td>
+  </ng-container>
+
+
+  <!-- Row -->
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplayWithExpand"
+      class="element-row">
+  </tr>
+
+  <!-- Expanded Row -->
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"
+      class="detail-row">
+  </tr>
+
+
+</table>
