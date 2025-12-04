@@ -47,8 +47,9 @@ ngOnInit(){
           };
         this.userService.register(userDTO).subscribe({
           next:(data:UserDTO)=>{
+            localStorage.setItem('username', data.username);
              this.snack.open("Se registró correctamente y se asignó el Id "+data.id.toString(),"OK",{duration:2000});
-                this.router.navigate(["/login"]);
+                this.router.navigate(["/author-register"]);
            },
            error: (http_error)=>{
                this.snack.open("ERROR: No se agregó el registro solicitado. "+http_error.error.message,"OK",{duration:5000});

@@ -7,6 +7,7 @@ import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { ProjectAddEdit } from './components/projects/project-add-edit/project-add-edit';
 import { Register } from './components/register/register';
+import { AuthorRegister } from './components/author-register/author-register';
 
 const routes: Routes = [
   {path:"author-list",component:AuthorList},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:"home", component:Home},
    {path:"", component:Login},
   {path:"login", component:Login},
-  {path:"register", component:Register}
+  {path:"register", component:Register},
+  {path:"author-register",component:AuthorRegister}
 ];
 
 @NgModule({

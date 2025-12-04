@@ -16,6 +16,7 @@ import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { ProjectAddEdit } from './components/projects/project-add-edit/project-add-edit';
 import { Register } from './components/register/register';
+import { AuthorRegister } from './components/author-register/author-register';
 @NgModule({
   declarations: [
     App,
@@ -27,7 +28,8 @@ import { Register } from './components/register/register';
     Home,
     Login,
     ProjectAddEdit,
-    Register
+    Register,
+    AuthorRegister
   ],
   imports: [
     BrowserModule,

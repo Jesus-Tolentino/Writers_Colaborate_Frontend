@@ -26,12 +26,16 @@ applyFilter(event: Event) {
   }
 CargarLista()
 {
+  const nameuser = localStorage.getItem('username')?? "";
   this.authorService.findAll().subscribe
   (
     {
       next:(data:Author[])=>
       {
-        this.dsAuthorities=new MatTableDataSource(data);
+        const filtrados = data.filter(a =>
+        a.name?.trim().toLowerCase() === nameuser.trim().toLowerCase()
+      );
+        this.dsAuthorities=new MatTableDataSource(filtrados);
       },
       error:(err)=>
       {
