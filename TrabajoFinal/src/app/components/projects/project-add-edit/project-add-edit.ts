@@ -3,14 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectService } from '../../../services/project-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Project } from '../../../module/project';
+import { Project } from '../../../models/project';
 import { MatDatepicker } from '@angular/material/datepicker';
-
 @Component({
   selector: 'app-project-add-edit',
   standalone: false,
   templateUrl: './project-add-edit.html',
-  styleUrl: './project-add-edit.css',
+  styleUrl: './project-add-edit.css'
 })
 export class ProjectAddEdit {
     @ViewChild('pickerCreation') pickerCreation!: MatDatepicker<Date>;
@@ -21,7 +20,7 @@ export class ProjectAddEdit {
      private activatedRoute: ActivatedRoute){}
 
 ngOnInit(): void {
-    this.CargarFormulario(); 
+    this.CargarFormulario();
   }
 CargarFormulario() {
     this.crudForm = this.formBuilder.group(
@@ -53,14 +52,11 @@ CargarFormulario() {
         })
 
     }
-
-
   }
 
   Grabar(){
 
     if (this.crudForm.valid) {
-
 
       const project:Project= {
           id:this.crudForm.get("id")?.value,
@@ -82,7 +78,7 @@ CargarFormulario() {
                 error: (http_error)=>{
                         this.snack.open("ERROR: No se actualizó el registro solicitado. "+http_error.error.message,"OK",{duration:5000});
                         console.log(http_error);
-              }  
+              }
           })
         } else {
             this.projectService.new(project).subscribe({
@@ -93,7 +89,7 @@ CargarFormulario() {
                 error: (http_error)=>{
                         this.snack.open("ERROR: No se agregó el registro solicitado. "+http_error.error.message,"OK",{duration:5000});
                         console.log(http_error);
-            }  
+            }
           })
         }
     } else {

@@ -3,7 +3,7 @@ import { Userdtoservice } from '../../services/userdtoservice';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserDTO } from '../../module/userDTO';
+import { UserDTO } from '../../models/userDTO';
 
 @Component({
   selector: 'app-register',
@@ -28,22 +28,22 @@ ngOnInit(){
         username:["",[Validators.required]],
         password:["",[Validators.required]],
         authorities:["ROLE_WRITER"],
-        
+
       }
     );
   }
 
   Grabar(){
-  
+
       if (this.crudForm.valid) {
-  
-  
+
+
         const userDTO:UserDTO= {
             id:this.crudForm.get("id")?.value,
             username:this.crudForm.get("username")?.value,
             password:this.crudForm.get("password")?.value,
             authorities:this.crudForm.get("authorities")?.value,
-            
+
           };
         this.userService.register(userDTO).subscribe({
           next:(data:UserDTO)=>{
@@ -53,7 +53,7 @@ ngOnInit(){
            error: (http_error)=>{
                this.snack.open("ERROR: No se agregó el registro solicitado. "+http_error.error.message,"OK",{duration:5000});
                console.log(http_error);
-           }  
+           }
         })
       }
       else {

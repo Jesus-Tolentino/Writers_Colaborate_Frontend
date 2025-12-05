@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProjectService } from '../../../services/project-service';
-import { Project } from '../../../module/project';
+import { Project } from '../../../models/project';
 import { MatTableDataSource } from '@angular/material/table';
 import { DeleteConfirmation } from '../../confirmations/delete-confirmation/delete-confirmation';
 import { MatDialog } from '@angular/material/dialog';
@@ -62,12 +62,12 @@ Borrar(id:number){
             error: (http_error)=>{
                     this.snack.open("ERROR: No se eliminó el registro solicitado. "+http_error.error.message,"OK",{duration:5000});
                     console.log(http_error);
-            }   
+            }
           })
         }
       }
     );
-    
+
   }
 
 

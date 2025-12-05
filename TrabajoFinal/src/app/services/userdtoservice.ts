@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserDTO } from '../module/userDTO';
-import { TokenDTO } from '../module/TokenDTO';
+import { UserDTO } from '../models/userDTO';
+import { TokenDTO } from '../models/TokenDTO';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -42,7 +42,7 @@ export class Userdtoservice {
     if(typeof localStorage !=="undefined"){
       if(localStorage.getItem('user_id')!==null) {
         return parseInt(localStorage.getItem('user_id')!.toString());
-      }      
+      }
     }
     return 0;
   }
@@ -51,7 +51,7 @@ export class Userdtoservice {
     if(typeof localStorage !=="undefined"){
       if(localStorage.getItem('authorities')!==null) {
         return localStorage.getItem('authorities');
-      }      
+      }
     }
     return "";
   }
@@ -60,7 +60,7 @@ export class Userdtoservice {
     if(typeof localStorage !=="undefined"){
       if(localStorage.getItem('jwtToken')!==null) {
         return localStorage.getItem('jwtToken');
-      }      
+      }
     }
     return "";
   }

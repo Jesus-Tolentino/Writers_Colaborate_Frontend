@@ -10,14 +10,14 @@
 <br>
     <mat-form-field>
         <mat-label>title</mat-label>
-        <input matInput formControlName="title">        
-    </mat-form-field>    
+        <input matInput formControlName="title">
+    </mat-form-field>
     <span style="color:red"  *ngIf="this.crudForm.get('title')?.hasError('required') && this.crudForm.get('title')?.touched " >Este campo es requerido</span>
     <br>
     <mat-form-field>
         <mat-label>description</mat-label>
-        <input matInput formControlName="description">        
-    </mat-form-field>    
+        <input matInput formControlName="description">
+    </mat-form-field>
     <span style="color:red"  *ngIf="this.crudForm.get('description')?.hasError('required') && this.crudForm.get('description')?.touched " >Este campo es requerido</span>
     <span style="color:red"  *ngIf="this.crudForm.get('description')?.hasError('minlength') && this.crudForm.get('description')?.touched " >Se requiere mínimo 6 caracteres</span>
     <br>
@@ -45,8 +45,8 @@
 <br>
  <mat-form-field>
         <mat-label>Estado</mat-label>
-        <input matInput formControlName="state">        
-    </mat-form-field>    
+        <input matInput formControlName="state">
+    </mat-form-field>
 <span style="color:red"  *ngIf="this.crudForm.get('state')?.hasError('required') && this.crudForm.get('state')?.touched " >Este campo es requerido</span>
 <br>
     <mat-checkbox matInput formControlName="meetingsEnabled">Reunión programada</mat-checkbox>
@@ -55,5 +55,5 @@
 
 <br>
 <button mat-raised-button routerLink="/project-list">Cancelar</button>
- | 
+ |
 <button mat-flat-button (click)="Grabar()" >Grabar</button>

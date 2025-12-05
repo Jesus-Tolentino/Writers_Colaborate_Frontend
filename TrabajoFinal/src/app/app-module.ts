@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { AuthorList } from './components/authorities/author-list/author-list';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MaterialModuleModule } from './modules/material-module/material-module-module';
 import { AuthorAddEdit } from './components/authorities/author-add-edit/author-add-edit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,12 @@ import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { ProjectAddEdit } from './components/projects/project-add-edit/project-add-edit';
 import { Register } from './components/register/register';
+//import { Comments } from './components/comments/comments';
+import { ProjectCollection } from './components/project-collection/project-collection';
+import { Collection } from './components/collection/collection';
+import { CommentsAddEdit } from './components/comments/comments-add-edit/comments-add-edit';
+import { CommentsList } from './components/comments/comments-list/comments-list';
+import { provideAnimations } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     App,
@@ -27,7 +33,12 @@ import { Register } from './components/register/register';
     Home,
     Login,
     ProjectAddEdit,
-    Register
+    Register,
+    Comment,
+    ProjectCollection,
+    Collection,
+    CommentsAddEdit,
+    CommentsList
   ],
   imports: [
     BrowserModule,
@@ -40,7 +51,10 @@ import { Register } from './components/register/register';
 ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
+    provideHttpClient(
+      withInterceptors([autorizacionInterceptor])
+    )
   ],
   bootstrap: [App]
 })

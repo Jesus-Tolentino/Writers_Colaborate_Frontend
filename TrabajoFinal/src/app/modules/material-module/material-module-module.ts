@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule} from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -16,8 +16,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
-
 
 @NgModule({
   declarations: [],
@@ -39,10 +37,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatToolbarModule,
     MatButtonModule,
     MatTooltipModule,
-    MatInputModule
+    MatInputModule,
+    MatLabel
   ],
   exports:[
-    MatTableModule,   
+    MatTableModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
@@ -57,9 +56,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatSliderModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatLabel,
   ]
 })
-export class MaterialModuleModule { 
-
-}
+export class MaterialModuleModule {}
