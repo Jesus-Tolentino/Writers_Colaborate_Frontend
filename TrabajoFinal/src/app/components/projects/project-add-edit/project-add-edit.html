@@ -1,59 +1,75 @@
-<h3 *ngIf="!(projectId>0)">Registrar Proyecto</h3>
-<h3 *ngIf="projectId>0">Editar Proyecto</h3>
+@if (!(projectId>0)) {
+  <h3>Registrar Proyecto</h3>
+}
+@if (projectId>0) {
+  <h3>Editar Proyecto</h3>
+}
 <br>
-<br>
-<form [formGroup]="crudForm">
-    <mat-form-field>
+  <br>
+    <form [formGroup]="crudForm">
+      <mat-form-field>
         <mat-label>Id</mat-label>
         <input matInput formControlName="id" readonly="true">
-    </mat-form-field>
-<br>
-    <mat-form-field>
-        <mat-label>title</mat-label>
-        <input matInput formControlName="title">
-    </mat-form-field>
-    <span style="color:red"  *ngIf="this.crudForm.get('title')?.hasError('required') && this.crudForm.get('title')?.touched " >Este campo es requerido</span>
-    <br>
-    <mat-form-field>
-        <mat-label>description</mat-label>
-        <input matInput formControlName="description">
-    </mat-form-field>
-    <span style="color:red"  *ngIf="this.crudForm.get('description')?.hasError('required') && this.crudForm.get('description')?.touched " >Este campo es requerido</span>
-    <span style="color:red"  *ngIf="this.crudForm.get('description')?.hasError('minlength') && this.crudForm.get('description')?.touched " >Se requiere mínimo 6 caracteres</span>
-    <br>
+      </mat-form-field>
+      <br>
+        <mat-form-field>
+          <mat-label>title</mat-label>
+          <input matInput formControlName="title">
+        </mat-form-field>
+        @if (this.crudForm.get('title')?.hasError('required') && this.crudForm.get('title')?.touched ) {
+          <span style="color:red"  >Este campo es requerido</span>
+        }
+        <br>
+          <mat-form-field>
+            <mat-label>description</mat-label>
+            <input matInput formControlName="description">
+          </mat-form-field>
+          @if (this.crudForm.get('description')?.hasError('required') && this.crudForm.get('description')?.touched ) {
+            <span style="color:red"  >Este campo es requerido</span>
+          }
+          @if (this.crudForm.get('description')?.hasError('minlength') && this.crudForm.get('description')?.touched ) {
+            <span style="color:red"  >Se requiere mínimo 6 caracteres</span>
+          }
+          <br>
 
-    <mat-form-field>
-  <mat-label>Fecha de Creación</mat-label>
-  <input matInput [matDatepicker]="pickerCreation" formControlName="creationDate">
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="pickerCreation"></mat-datepicker-toggle>
-  <mat-datepicker #pickerCreation></mat-datepicker>
-</mat-form-field>
-<span style="color:red"  *ngIf="this.crudForm.get('creationDate')?.hasError('required') && this.crudForm.get('creationDate')?.touched " >Este campo es requerido</span>
+            <mat-form-field>
+              <mat-label>Fecha de Creación</mat-label>
+              <input matInput [matDatepicker]="pickerCreation" formControlName="creationDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="pickerCreation"></mat-datepicker-toggle>
+              <mat-datepicker #pickerCreation></mat-datepicker>
+            </mat-form-field>
+            @if (this.crudForm.get('creationDate')?.hasError('required') && this.crudForm.get('creationDate')?.touched ) {
+              <span style="color:red"  >Este campo es requerido</span>
+            }
 
-<br>
+            <br>
 
-<mat-form-field>
-  <mat-label>Fecha de Publicación</mat-label>
-  <input matInput [matDatepicker]="pickerPublication" formControlName="publicationDate">
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="pickerPublication"></mat-datepicker-toggle>
-  <mat-datepicker #pickerPublication></mat-datepicker>
-</mat-form-field>
-<span style="color:red"  *ngIf="this.crudForm.get('publicationDate')?.hasError('required') && this.crudForm.get('publicationDate')?.touched " >Este campo es requerido</span>
+              <mat-form-field>
+                <mat-label>Fecha de Publicación</mat-label>
+                <input matInput [matDatepicker]="pickerPublication" formControlName="publicationDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerPublication"></mat-datepicker-toggle>
+                <mat-datepicker #pickerPublication></mat-datepicker>
+              </mat-form-field>
+              @if (this.crudForm.get('publicationDate')?.hasError('required') && this.crudForm.get('publicationDate')?.touched ) {
+                <span style="color:red"  >Este campo es requerido</span>
+              }
 
-<br>
- <mat-form-field>
-        <mat-label>Estado</mat-label>
-        <input matInput formControlName="state">
-    </mat-form-field>
-<span style="color:red"  *ngIf="this.crudForm.get('state')?.hasError('required') && this.crudForm.get('state')?.touched " >Este campo es requerido</span>
-<br>
-    <mat-checkbox matInput formControlName="meetingsEnabled">Reunión programada</mat-checkbox>
-<br>
-</form>
+              <br>
+                <mat-form-field>
+                  <mat-label>Estado</mat-label>
+                  <input matInput formControlName="state">
+                </mat-form-field>
+                @if (this.crudForm.get('state')?.hasError('required') && this.crudForm.get('state')?.touched ) {
+                  <span style="color:red"  >Este campo es requerido</span>
+                }
+                <br>
+                  <mat-checkbox matInput formControlName="meetingsEnabled">Reunión programada</mat-checkbox>
+                  <br>
+                  </form>
 
-<br>
-<button mat-raised-button routerLink="/project-list">Cancelar</button>
- |
-<button mat-flat-button (click)="Grabar()" >Grabar</button>
+                  <br>
+                    <button mat-raised-button routerLink="/project-list">Cancelar</button>
+                    |
+                    <button mat-flat-button (click)="Grabar()" >Grabar</button>
